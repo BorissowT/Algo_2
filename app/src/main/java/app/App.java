@@ -3,12 +3,109 @@
  */
 package app;
 
+import app.commands.CommandFactory;
+import app.commands.ICommand;
+import app.console.IConsole;
+import app.console.impl.Console;
+import app.data.Student;
+import app.lists.DoublyLinkedList;
+import app.lists.IListable;
+import app.lists.SinglyLinkedList;
+
+import java.util.LinkedList;
+
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
+
+
+    private static boolean IfSingleList;
+
+
+    private static boolean exitSubMenu;
+
+    public App() {
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        IConsole console = new Console();
+        CommandFactory factory = new CommandFactory(console);
+        LinkedList<ICommand> listOptions = factory.returnsListOption();
+        LinkedList<ICommand> cmds = factory.returnsCommands();
+        cli(listOptions, console);
+        cli(cmds, console);
+
+        /*boolean option = true;
+        IListable<Student> list = option ? new SinglyLinkedList() : new DoublyLinkedList();
+        exec((IListable)list);
+        IListable<Integer> integerlist = new SinglyLinkedList();
+        integerlist.add(10);
+        printListInformation(integerlist);*/
+    }
+
+    /*private static void cliOptions(LinkedList<ICommand> listOptions, IConsole console) {
+        App.setExitSubMenu(false);
+        do {
+            printSubMenu(listOptions);
+            ICommand cmd = selectAnOption(listOptions, console);
+            cmd.execute();
+            // selectAnOption(cmds, console).execute();
+        } while(!App.exitSubMenu);
+    }*/
+
+    public static void setIfSingleList(boolean ifSingleList) {
+        IfSingleList = ifSingleList;
+    }
+
+    public static void setExitSubMenu(boolean exitSubMenu) {
+        App.exitSubMenu = exitSubMenu;
+    }
+
+    private static void cli(LinkedList<ICommand> cmds, IConsole console) {
+        App.setExitSubMenu(false);
+        do {
+            printCommandLineMenu(cmds);
+            ICommand cmd = selectAnOption(cmds, console);
+            cmd.execute();
+            // selectAnOption(cmds, console).execute();
+        } while(!App.exitSubMenu);
+    }
+
+    private static ICommand selectAnOption(LinkedList<ICommand> cmds, IConsole console) {
+        do {
+            int selectedOption = console.readInteger("Please enter an option: ");
+            if (isValidOption(selectedOption, 0, cmds.size())) {
+                return cmds.get(selectedOption);
+            }
+        } while (true);
+    }
+
+    private static boolean isValidOption(int index, int min, int max) {
+        return index >= min && index < max;
+    }
+
+    private static void printCommandLineMenu(LinkedList<ICommand> cmds) {
+        System.out.println("Console-Application: Exercise-2 Timofei Borisov s0580092\n");
+        for (int i = 1; i < cmds.size(); i++) {
+            System.out.println(i + ". " + cmds.get(i));
+        }
+        System.out.println("\n0. " + cmds.get(0) + "\n");
+    }
+
+    private static void exec(IListable<Student> list) {
+        readStudents(list);
+        printListInformation(list);
+    }
+
+    private static void readStudents(IListable<Student> list) {
+        list.add(new Student("Alice", "Cooper", 7, 9));
+        list.add(new Student("Sheldon", "Cooper", 8, 8));
+        list.add(new Student("Donald", "Duck", 9, 10));
+    }
+
+    private static <T> void printListInformation(IListable<T> list) {
+        System.out.println("-----------------------------------------------");
+        System.out.println("Class   : " + list.getClass().getSimpleName());
+        System.out.println("Size    : " + list.size());
+        System.out.println("IsEmpty : " + list.isEmpty());
+        System.out.println(list);
     }
 }

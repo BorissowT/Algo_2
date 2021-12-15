@@ -30,13 +30,24 @@ public class SinglyLinkedList<T> implements IListable<T> {
 	}
 
 	public T get(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		if ((head == null) || (index < 0) || (index >= size())) {
+			return null;
+			}
+		Node temp = head;
+		for (int i = 0; i < index; i++) {
+			temp = temp.next;
+			}
+		return temp.data;
 	}
 
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		int counter = 0;
+		Node temp = head;
+		while (temp != null) {
+			counter++;
+			temp = temp.next;
+			}
+		return counter;
 	}
 
 	public void add(T data) {
