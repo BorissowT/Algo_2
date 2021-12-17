@@ -26,33 +26,27 @@ public class App {
     }
 
     public static void main(String[] args) {
+        /*boolean option = true;
+        IListable<Student> list = option ? new SinglyLinkedList() : new DoublyLinkedList();
+        exec((IListable)list);
+        IListable<Integer> integerlist = new SinglyLinkedList();
+        integerlist.add(10);*/
+        //printListInformation(integerlist);
+
         IConsole console = new Console();
         CommandFactory factory = new CommandFactory(console);
         LinkedList<ICommand> listOptions = factory.returnsListOption();
         LinkedList<ICommand> cmds = factory.returnsCommands();
         cli(listOptions, console);
         cli(cmds, console);
-
-        /*boolean option = true;
-        IListable<Student> list = option ? new SinglyLinkedList() : new DoublyLinkedList();
-        exec((IListable)list);
-        IListable<Integer> integerlist = new SinglyLinkedList();
-        integerlist.add(10);
-        printListInformation(integerlist);*/
     }
-
-    /*private static void cliOptions(LinkedList<ICommand> listOptions, IConsole console) {
-        App.setExitSubMenu(false);
-        do {
-            printSubMenu(listOptions);
-            ICommand cmd = selectAnOption(listOptions, console);
-            cmd.execute();
-            // selectAnOption(cmds, console).execute();
-        } while(!App.exitSubMenu);
-    }*/
 
     public static void setIfSingleList(boolean ifSingleList) {
         IfSingleList = ifSingleList;
+    }
+
+    public static boolean getIfSingleList() {
+        return IfSingleList;
     }
 
     public static void setExitSubMenu(boolean exitSubMenu) {

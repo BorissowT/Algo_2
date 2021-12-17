@@ -13,4 +13,12 @@ public interface IListable<T> {
 	boolean isEmpty();
 	// void search
 	void print();
+
+	void searchByName(String name);
+
+	void searchByLastname(String lastname);
+
+	void searchByCourse(int course);
+
+	void searchByMNumber(int number);
 }

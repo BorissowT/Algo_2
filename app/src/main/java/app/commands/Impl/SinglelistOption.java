@@ -2,10 +2,16 @@ package app.commands.Impl;
 
 import app.App;
 import app.commands.ICommand;
+import app.console.IConsole;
 
 public class SinglelistOption implements ICommand{
+	final private IConsole console;
 
-		@Override
+	public SinglelistOption(IConsole console) {
+		this.console = console;
+	}
+
+	@Override
 		public void execute() {
 			App.setIfSingleList(true);
 			App.setExitSubMenu(true);
