@@ -1,11 +1,13 @@
 package app.sort;
 
+import app.lists.IListable;
+
 import java.util.List;
 
 public class SelectionSort<T> extends app.sort.Swap<T> implements app.sort.Sortable<T> {
 
 	@Override
-	public void sort(List<T> list, app.sort.Comparator<T> comp) {
+	public void sort(IListable<T> list, app.sort.Comparator<T> comp) {
 		int minimum = 0;
 		for (int i = 0; i < list.size(); i++) {
 			minimum = i;

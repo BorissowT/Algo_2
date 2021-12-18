@@ -31,7 +31,11 @@ public class App {
 
         list.add(new Student("Alice", "Cooper", 7, 99));
         list.add(new Student("Bob", "Metal", 5, 29));
-        list.add(new Student("Bob2", "Iron", 4, 93));
+        list.add(new Student("Bob2", "Iron1", 12, 32));
+        list.add(new Student("Bob3", "Iron2", 7, 45));
+        list.add(new Student("Bob4", "Iron3", 12, 33));
+        list.add(new Student("Bob5", "Iron4", 5, 12));
+        list.add(new Student("Bob6", "Iron5", 7, 100));
 
         IConsole console = new Console();
         CommandFactory factory = new CommandFactory(console,list);

@@ -1,7 +1,9 @@
 package app.sort;
 
+import app.lists.IListable;
+
 import java.util.List;
 
 public interface Sortable<T> {
-	public void sort(List<T> list, Comparator<T> comp);
+	public void sort(IListable<T> list, Comparator<T> comp);
 }

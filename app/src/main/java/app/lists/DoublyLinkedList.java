@@ -94,6 +94,7 @@ public class DoublyLinkedList<T> implements IListable<T> {
 	}
 
 	public void set(int index, T data) {
+		this.insert(index,data);
 	}
 
 	public T get(int index) {

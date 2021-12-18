@@ -43,8 +43,22 @@ public class SinglyLinkedList<T> implements IListable<T> {
 	}
 
 	public void set(int index, T data) {
-		// TODO Auto-generated method stub
-		
+		Node node = new Node();
+		Node temp = new Node();
+		node.data = data;
+		if ((head == null) || (index == 0)) {
+			temp = head.next;
+			head = node;
+			node.next = temp;
+			return;
+		}
+		Node prev = head;
+		for (int i = 0; i < index-1; i++) {
+			prev = prev.next;
+		}
+		temp = prev.next.next;
+		prev.next = node;
+		node.next = temp;
 	}
 
 	public void remove(int index) {
