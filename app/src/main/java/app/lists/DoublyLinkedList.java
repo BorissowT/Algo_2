@@ -34,12 +34,6 @@ public class DoublyLinkedList<T> implements IListable<T> {
 		System.out.println("not found!");
 	}
 
-//	public T searchByLastname(String lastname){}
-
-//	public T searchByCourse(int course){}
-
-//  public T searchByMatriculationNumber(int matriculationNumber){}
-
 	public boolean isEmpty() {
 		return this.head == null && this.tail == null;
 	}

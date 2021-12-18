@@ -26,15 +26,15 @@ public class App {
     }
 
     public static void main(String[] args) {
-        /*boolean option = true;
-        IListable<Student> list = option ? new SinglyLinkedList() : new DoublyLinkedList();
-        exec((IListable)list);
-        IListable<Integer> integerlist = new SinglyLinkedList();
-        integerlist.add(10);*/
-        //printListInformation(integerlist);
+
+        IListable<Student> list = new SinglyLinkedList<>();
+
+        list.add(new Student("Alice", "Cooper", 7, 99));
+        list.add(new Student("Bob", "Metal", 5, 29));
+        list.add(new Student("Bob2", "Iron", 4, 93));
 
         IConsole console = new Console();
-        CommandFactory factory = new CommandFactory(console);
+        CommandFactory factory = new CommandFactory(console,list);
         LinkedList<ICommand> listOptions = factory.returnsListOption();
         LinkedList<ICommand> cmds = factory.returnsCommands();
         cli(listOptions, console);

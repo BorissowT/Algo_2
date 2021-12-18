@@ -27,6 +27,7 @@ public class SinglyLinkedList<T> implements IListable<T> {
 
 	public void insert(int index, T data) {
 		Node node = new Node();
+		node.data = data;
 		Node temp = new Node();
 		if (head == null) {
 			head = node;
@@ -54,8 +55,7 @@ public class SinglyLinkedList<T> implements IListable<T> {
 		for (int i = 0; i < index-1; i++) {
 			prev = prev.next;
 		}
-		Node temp = prev.next;
-		prev.next = temp.next;
+		prev.next = prev.next.next;
 	}
 
 	public void searchByName(String name){

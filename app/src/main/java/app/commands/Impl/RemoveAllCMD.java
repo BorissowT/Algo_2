@@ -26,6 +26,6 @@ public class RemoveAllCMD implements ICommand {
 
 	@Override
 	public String toString() {
-		return "Removes the Student at the specified position in this list.";}
+		return "Removes all of the Students from this list.";}
 
 }

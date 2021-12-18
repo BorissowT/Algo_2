@@ -18,10 +18,32 @@ public class SortCMD implements ICommand {
 	}
 
 	@Override
-	public void execute() { }
+	public void execute() {
+		while (true) {
+			System.out.println("Select a sorting method for sorting:\n" +
+					" 1. Bubblesort?\n" +
+					" 2. Selectionsort?\n" +
+					"\n0. Exit\n");
+			switch (console.readInteger("Please enter a number for an option:")) {
+				case 1:
+					if (App.getIfSingleList())
+						SingleList.searchByName(console.readString("Please enter prename for the search: "));
+					else
+						DoubleList.searchByName(console.readString("Please enter prename for the search: "));
+					break;
+				case 2:
+					if (App.getIfSingleList())
+						SingleList.searchByLastname(console.readString("Please enter surname for the search: "));
+					else
+						DoubleList.searchByLastname(console.readString("Please enter surname for the search: "));
+					break;
+			}
+		}
+	}
 
 	@Override
-	public String toString() {
-		return "Sort list by different properties.";}
+	public String toString(){
+		return "Sort list by different properties.";
+	}
 
 }

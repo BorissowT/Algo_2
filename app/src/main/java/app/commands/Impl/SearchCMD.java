@@ -51,6 +51,8 @@ public class SearchCMD implements ICommand {
 					else
 						DoubleList.searchByMNumber(console.readInteger("Please enter course for the search: "));
 					break;
+				case 0:
+					return;
 			}
 		}
 	}
