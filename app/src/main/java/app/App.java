@@ -27,7 +27,8 @@ public class App {
 
     public static void main(String[] args) {
 
-        IListable<Student> list = new SinglyLinkedList<>();
+        //IListable<Student> list = new SinglyLinkedList<>();
+        IListable<Student> list = new DoublyLinkedList<>();
 
         list.add(new Student("Alice", "Cooper", 7, 99));
         list.add(new Student("Bob", "Metal", 5, 29));

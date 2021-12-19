@@ -78,6 +78,7 @@ public class DoublyLinkedList<T> implements IListable<T> {
 
 	public void insert(int index, T data) {
 		Node node = new Node();
+		node.data = data;
 		Node temp = new Node();
 		if (head == null) {
 			head = node;
@@ -94,7 +95,30 @@ public class DoublyLinkedList<T> implements IListable<T> {
 	}
 
 	public void set(int index, T data) {
-		this.insert(index,data);
+		Node node = new Node();
+		Node temp = new Node();
+		node.data = data;
+		if ((head == null) || (index == 0)) {
+			temp = head.next;
+			head = node;
+			head.next = temp;
+			head.prev = null;
+			return;
+		}
+		Node prev = head;
+		for (int i = 0; i < index-1; i++) {
+			prev = prev.next;
+		}
+		if(prev.next.next == null){
+			prev.next = node;
+			node.prev = prev;
+		}
+		else{
+			temp = prev.next.next;
+			prev.next = node;
+			node.next = temp;
+			temp.prev = node;
+		}
 	}
 
 	public T get(int index) {

@@ -16,10 +16,11 @@ public class CommandFactory {
 	IListable<Student> SingleList = new SinglyLinkedList<>();
 	IListable<Student> DoubleList = new DoublyLinkedList<>();
 
-	public CommandFactory(IConsole console, IListable<Student> SingleList) {
+	public CommandFactory(IConsole console, IListable<Student> list) {
 		super();
 		this.console = console;
-		this.SingleList = SingleList;
+		this.DoubleList = list;
+		//this.SingleList = list;
 	}
 	public LinkedList<ICommand> returnsCommands() {
 		LinkedList<ICommand> cmds = new LinkedList<ICommand>();
